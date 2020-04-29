@@ -3,16 +3,17 @@ import React, { useState } from "react";
 
 import { useMqttState } from "mqtt-react-hooks";
 
-import { FormLayout, FormLayoutGroup, Input,
-         Div, Button, Group} from "@vkontakte/vkui";
-
+import { FormLayout,
+         FormLayoutGroup,
+         Input,
+         Button,
+        } from "@vkontakte/vkui";
 
 export default function Form() {
   const { mqtt } = useMqttState();
-  const [topic, setTopic] = useState("");
-  const [message, setMessage] = useState("");
+  const [topic, setTopic] = useState("messages/");
+  const [message, setMessage] = useState("Hello world!");
   
-
   const handleSubmit = (evt) => {
 
     evt.preventDefault();
@@ -21,7 +22,7 @@ export default function Form() {
   
   return (
 
-    <Group title="Navigation Example">
+    
       <FormLayout onSubmit={handleSubmit}>
         <FormLayoutGroup top="Отправить MQTT сообщение">
           <Input
@@ -42,6 +43,5 @@ export default function Form() {
           </Button>
         </FormLayoutGroup>
       </FormLayout>
-    </Group>
   );
 }

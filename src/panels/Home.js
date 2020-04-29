@@ -2,10 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Panel from "@vkontakte/vkui/dist/components/Panel/Panel";
 import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader";
-import Group from "@vkontakte/vkui/dist/components/Group/Group";
-import Cell from "@vkontakte/vkui/dist/components/Cell/Cell";
-import Avatar from "@vkontakte/vkui/dist/components/Avatar/Avatar";
-import Div from "@vkontakte/vkui/dist/components/Div/Div";
+import {Div, Link, Group, PanelHeaderButton } from '@vkontakte/vkui';
+
 // import MessageList from '../components/datalist';
 import { Connector } from "mqtt-react-hooks";
 import Status from "../components/status";
@@ -16,20 +14,22 @@ const Home = ({ id, fetchedUser, data }) => {
   return (
     <Connector brokerUrl="wss://3609e5c0:5e558df93294fa5f@broker.shiftr.io/">
       <Panel id={id}>
-        <PanelHeader>
-          <Status />
+      
+        <PanelHeader
+        left={<PanelHeaderButton ><Status/></PanelHeaderButton>}
+        >
+        Cтатус
         </PanelHeader>
-
-		<Div>
-			<Form />
-
-			
-				  <ListM/>
-				 </Div>
-	  </Panel>
-	  
-	</Connector>
-	
+        <Div>
+        <Group title="Navigation Example">
+          <p> Для просмотра воспользуйтесь <Link href="https://shiftr.io/ncca_user/vk/embed?zoom=" target="_blank"> картой  </Link> cообщений shiftr.io </p>
+          <Form />
+          <ListM />
+        
+        </Group>
+        </Div>
+      </Panel>
+    </Connector>
   );
 };
 
