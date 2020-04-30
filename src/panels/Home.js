@@ -1,24 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Panel from "@vkontakte/vkui/dist/components/Panel/Panel";
 import PanelHeader from "@vkontakte/vkui/dist/components/PanelHeader/PanelHeader";
-import {Div, Link, Group, PanelHeaderButton } from '@vkontakte/vkui';
+import {Div, Link, Group, PanelHeaderButton,Cell,Avatar } from '@vkontakte/vkui';
 
-// import MessageList from '../components/datalist';
 import { Connector } from "mqtt-react-hooks";
 import Status from "../components/status";
 import Form from "../components/sendMessage";
 import ListM from "../components/list";
 
-const Home = ({ id, fetchedUser, data }) => {
+const Home = ({ id, fetchedUser }) => {
   return (
-    <Connector brokerUrl="wss://3609e5c0:5e558df93294fa5f@broker.shiftr.io/">
+    
       <Panel id={id}>
-      
+    
+      {fetchedUser &&
+        <Connector brokerUrl="mqtts://3609e5c0:5e558df93294fa5f@broker.shiftr.io/" opts={{clientId: `vk_${fetchedUser.id}`}}>
         <PanelHeader
         left={<PanelHeaderButton ><Status/></PanelHeaderButton>}
         >
-        Cтатус
+        Id: vk_{fetchedUser.id}
         </PanelHeader>
         <Div>
         <Group title="Navigation Example">
@@ -28,8 +29,10 @@ const Home = ({ id, fetchedUser, data }) => {
         
         </Group>
         </Div>
+        </Connector>
+      }
       </Panel>
-    </Connector>
+
   );
 };
 
