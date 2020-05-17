@@ -1,5 +1,5 @@
 # Mqtt клиент для VK mini apps
-![https://vk.com/app7437004](https://sun9-66.userapi.com/c858328/v858328904/1f545e/IksfGSR3ORQ.jpg)
+![https://vk.com/app7437004](https://sun9-71.userapi.com/c858528/v858528904/199616/TejPS8syxVQ.jpg)
 
 Простое одностраничное приложение на платформе VK mini apps 
 
